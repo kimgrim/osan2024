@@ -1,0 +1,56 @@
+
+<html>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+<button type="button" onclick="startSort()">StartSorting</button>
+<div><canvas id="myChart" height="80"></div>
+<div id="debug">tried</div>
+<script>
+let total = 100;
+tryed = 0;
+function startSort() {
+    setInterval(function(){
+        for(let j = 0 ; j < sortedArray.length - 1 ; j++){
+            if(sortedArray[j] > sortedArray[j+1]){
+                tmp = sortedArray[j];
+                sortedArray[j] = sortedArray[j+1];
+                sortedArray[j+1] = tmp;
+            }
+        }
+    myChart.update();
+    }, 30);
+}
+
+
+let ctx = document.getElementById('myChart').getContext('2d');
+let myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'random number',
+            data: [],
+            borderColor: 'black',
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        },
+        {
+            label: 'sorted number',
+            data: [],
+            borderColor: 'blue',
+            backgroundColor: 'rgba(54, 162, 235, 1)',
+        }]
+    },
+    options: { }
+});
+let randomArray = myChart.data.datasets[0].data;
+let sortedArray = myChart.data.datasets[1].data;
+for ( let i=0 ; i<total ; i++) {
+   num = Math.floor(Math.random()*100);
+   myChart.data.labels[i] = i;
+   randomArray[i] = num;
+   sortedArray[i] = num;
+}
+myChart.update()
+</script>
+</body>
+</html> 

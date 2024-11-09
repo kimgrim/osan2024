@@ -1,0 +1,21 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            var sum = 0;
+            var t = [10];
+            for(i = 1;i <=100;i++){
+                Rnum = Math.floor(Math.random()*10);
+                sum += Rnum;
+                document.write(Rnum + "<br>");
+                t[Rnum]++;
+            }
+            document.write(sum + "<br>");
+            for(i = 0;i <= 10;i++){
+                document.write(i + "은(는)" + t[i] + "번 나왔습니다" + "<br>")
+            }
+        </script>
+    </body>
+</html>
